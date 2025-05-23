@@ -1,0 +1,134 @@
+.settings-overview {
+  flex: 1;
+  padding: 24px 32px;
+  background-color: #f8f9fa;
+  overflow-y: auto;
+  color: #2c3e50;
+}
+.settings-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+.settings-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: #2c3e50;
+  margin: 0;
+}
+
+.settings-form-container {
+  max-height: max-content;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+  margin-bottom: 1.5rem;
+}
+
+.settings-form {
+  background-color: #fff;
+  border-radius: var(--radius);
+  padding: 1.25rem;
+}
+
+.form-row {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.form-group label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+}
+
+label.required::after,
+.form-group label[required]::after {
+  content: " *";
+  color: rgb(214, 62, 62);
+}
+
+/* .submit-btn {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: #4f46e5;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s;
+} */
+
+.submit-btn:disabled {
+  background-color: #a5b4fc;
+  cursor: not-allowed;
+}
+
+.success-message {
+  margin-top: 1rem;
+  color: green;
+}
+
+.error-message {
+  margin-top: 1rem;
+  color: red;
+}
+
+/* ----------  INPUT + ICON WRAPPER --------------- */
+.input-wrapper {
+  width: 50%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  /* the border lives on the wrapper: */
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding-right: 40px; /* room for icon */
+  transition: border-color 0.3s;
+}
+
+.input-wrapper:focus-within {
+  border-color: #4f46e5;
+}
+
+/* remove border from the actual input */
+.input-wrapper input {
+  flex: 1;
+  width: 100%;
+  padding: 0.75rem;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  background: transparent;
+}
+
+/* icons live inside wrapper, absolute‑positioned */
+.icon-success,
+.icon-error {
+  position: absolute;
+  right: 12px;
+  font-size: 1rem;
+}
+
+.icon-success {
+  color: green;
+}
+.icon-error {
+  color: red;
+}
+
+/* override previous rules that targeted input[type=password] */
+input[type="password"] {
+  padding: 0.75rem; /* keep same padding for other contexts */
+  border: none; /* ensure border off everywhere */
+}

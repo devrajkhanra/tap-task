@@ -1,0 +1,51 @@
+/* Layout container */
+.container {
+  position: relative;
+  display: flex;
+  height: calc(100vh - 64px); /* Subtract the header height */
+  margin-top: 64px; /* Push content down to account for the fixed header */
+  overflow: hidden; /* Prevent container overflow */
+}
+
+/* Main content styles */
+.main-wrapper {
+  flex: 1;
+  overflow-y: auto; /* Enable scrolling for main content */
+  height: 100%;
+  margin-left: 280px; /* Match sidebar width from your CSS */
+}
+
+/* Apply these styles to the existing sidebar class in your sidebar component */
+.sidebar {
+  position: fixed;
+  top: 64px; /* Match header height */
+  left: 0;
+  width: 280px; /* Matching your existing width */
+  height: calc(100vh - 64px);
+  overflow-y: auto; /* Allow scrolling within sidebar if content exceeds height */
+  z-index: 10;
+  /* Keep all your existing sidebar styles */
+  background-color: #ffffff;
+  padding: 0;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid #f0f0f0;
+}
+
+/* The rest of your sidebar styles (sidebar-section, section-title, etc.) remain unchanged */
+@media (max-width: 768px) {
+  .sidebar {
+    position: absolute;
+    left: -280px; /* Move sidebar off-screen */
+    transition: left 0.3s ease-in-out;
+  }
+
+  .sidebar.open {
+    left: 0; /* Bring sidebar back */
+  }
+
+  .main-wrapper {
+    margin-left: 0; /* Remove sidebar spacing when collapsed */
+  }
+}

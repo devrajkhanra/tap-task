@@ -1,0 +1,13 @@
+/* Main dashboard styles */
+.main {
+  flex: 1;
+  padding: 24px 32px;
+  background-color: #f8f9fa;
+  overflow-y: auto;
+  color: #2c3e50;
+}
+@media (max-width: 768px) {
+  .main {
+    padding: 16px;
+  }
+}

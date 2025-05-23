@@ -1,0 +1,207 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 24px;
+  height: 64px;
+  background-color: #ffffff;
+  color: #2c3e50;
+  border-bottom: 1px solid #f0f0f0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  position: fixed; /* Fix the header */
+  top: 0; /* Stick to the top */
+  left: 0; /* Align to the left */
+  right: 0; /* Stretch across the width */
+  z-index: 1000; /* Ensure it's above other content */
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+}
+
+.header-logo {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+  color: #3498db;
+  letter-spacing: -0.5px;
+}
+
+/* Search styling */
+.search-container {
+  position: relative;
+  width: 320px;
+  margin: 0 24px;
+}
+
+.search-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #95a5a6;
+  font-size: 14px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 8px 8px 8px 36px;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  background-color: #f8f9fa;
+  font-size: 14px;
+  color: #2c3e50;
+  transition: all 0.2s ease;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #3498db;
+  background-color: #ffffff;
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+}
+
+.search-input::placeholder {
+  color: #95a5a6;
+}
+
+/* Header right section */
+.header-right {
+  display: flex;
+  align-items: center;
+}
+
+/* Navigation styling */
+.header-nav {
+  margin-right: 24px;
+}
+
+.nav-list {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.nav-item {
+  margin: 0;
+}
+
+.nav-link {
+  display: inline-block;
+  padding: 8px 16px;
+  color: #5c6670;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.nav-link:hover {
+  color: #3498db;
+  background-color: #f8f9fa;
+}
+
+.nav-link.active {
+  color: #3498db;
+  font-weight: 600;
+}
+
+/* Header actions */
+.header-actions {
+  display: flex;
+  align-items: center;
+}
+
+.icon-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  margin-left: 8px;
+  background-color: transparent;
+  border: none;
+  border-radius: 50%;
+  color: #5c6670;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.icon-button:hover {
+  background-color: #f8f9fa;
+  color: #3498db;
+}
+
+.user-profile {
+  margin-left: 8px;
+}
+
+.profile-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background-color: #e5f4ff;
+  border: none;
+  border-radius: 50%;
+  color: #3498db;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.profile-button:hover {
+  background-color: #d0e8fa;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 40px;
+  right: 0;
+  background: white;
+  border: 1px solid #ccc;
+  padding: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.dropdown-item {
+  background: none;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+}
+
+.dropdown-item:hover {
+  background: #f0f0f0;
+}
+
+/* 1️⃣  Base rule – hide it everywhere first */
+.toggle-sidebar {
+  display: none;
+}
+
+/* 2️⃣  Mobile‑first override – show when the viewport is ≤ 768 px */
+@media (max-width: 768px) {
+  .toggle-sidebar {
+    display: flex; /* or inline-flex / block – whichever suits */
+    align-items: center;
+    justify-content: center;
+    /* optional: size & style */
+    width: 36px;
+    height: 36px;
+    margin-right: 8px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+  }
+
+  /* If you also want to collapse the search bar on mobile: */
+  .search-container {
+    display: none;
+  }
+}

@@ -1,0 +1,241 @@
+.todo-container {
+  flex: 1;
+  padding: 2rem;
+  background-color: #f9fafb;
+  overflow-y: auto;
+  color: var(--text-primary);
+}
+
+.todo-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.todo-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+/* Button Styles */
+button {
+  border: none;
+  cursor: pointer;
+  border-radius: var(--radius);
+  transition: background-color 0.2s ease;
+  font-weight: 500;
+}
+
+.create-todo-btn {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+}
+
+.create-todo-btn:hover {
+  background-color: var(--primary-hover);
+}
+
+/* Table */
+.todo-table-container {
+  border-radius: 12px;
+  overflow-x: auto;
+  background: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+.todo-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 0.875rem;
+}
+
+.todo-table th,
+.todo-table td {
+  text-align: left;
+  padding: 1rem;
+}
+
+.todo-table th {
+  color: var(--text-secondary);
+  background-color: white;
+  font-weight: 600;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.todo-table th:first-child {
+  border-top-left-radius: var(--radius);
+}
+.todo-table th:last-child {
+  border-top-right-radius: var(--radius);
+}
+
+.todo-row {
+  border-bottom: 1px solid var(--border-color);
+  transition: background-color 0.2s;
+}
+
+.todo-row:hover {
+  background-color: var(--background-color);
+}
+
+.todo-cell {
+  vertical-align: middle;
+}
+
+.title-cell {
+  font-weight: 600;
+  max-width: 250px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.description-cell {
+  color: var(--text-light);
+  max-width: 400px;
+  font-size: 0.875rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.time-cell {
+  text-align: center;
+  color: #555;
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
+
+.action-cell {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+/* Buttons in table */
+.edit-btn,
+.delete-btn {
+  padding: 0.35rem 0.6rem;
+  font-size: 0.75rem;
+  border-radius: 6px;
+}
+
+.edit-btn {
+  background-color: rgba(59, 130, 246, 0.1);
+  color: var(--primary-color);
+}
+.edit-btn:hover {
+  background-color: var(--primary-hover);
+  color: white;
+}
+
+.delete-btn {
+  background-color: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+}
+.delete-btn:hover {
+  background-color: #ef4444;
+  color: white;
+}
+
+/* Empty State */
+.empty-state {
+  padding: 3rem 1rem;
+  border-radius: var(--radius);
+  text-align: center;
+  color: var(--text-secondary);
+  background-color: var(--background-color);
+}
+
+.empty-icon {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  opacity: 0.6;
+}
+
+/* Loading State */
+.loading-overlay {
+  display: flex;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.loading-spinner {
+  width: 28px;
+  height: 28px;
+  border: 3px solid var(--background-color);
+  border-top: 3px solid var(--primary-color);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Error Message */
+.error-message {
+  background-color: #fee2e2;
+  color: #b91c1c;
+  padding: 0.75rem;
+  border-radius: var(--radius);
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
+}
+
+/* Priority Badge */
+.priority-badge {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: capitalize;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  display: inline-block;
+}
+
+.priority-badge.low {
+  color: #16a34a;
+  background-color: #dcfce7;
+}
+
+.priority-badge.medium {
+  color: #d97706;
+  background-color: #fef3c7;
+}
+
+.priority-badge.high {
+  color: #dc2626;
+  background-color: #fee2e2;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .todo-container {
+    padding: 1rem;
+  }
+
+  .todo-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .action-cell {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .todo-table th,
+  .todo-table td {
+    padding: 0.75rem;
+  }
+}
