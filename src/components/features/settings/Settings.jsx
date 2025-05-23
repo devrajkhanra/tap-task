@@ -2,7 +2,7 @@ import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import useAuthStore from "../../../store/authStore";
 import { useSettings } from "../../../hooks/useSettings";
-import "./settings.css";
+import "./Settings.css";
 import { faCheck, faExclamation } from "@fortawesome/free-solid-svg-icons";
 
 const Settings = () => {
