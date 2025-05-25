@@ -63,7 +63,7 @@ const useAuthStore = create(
 
         await get().handleApiCall(
           () =>
-            axiosInstance.get(`/auth/profile`, {
+            axiosInstance.get(`/api/auth/profile`, {
               withCredentials: true,
             }),
           (response) => {
@@ -91,7 +91,7 @@ const useAuthStore = create(
       login: async (credentials) => {
         return get().handleApiCall(
           () =>
-            axiosInstance.post(`/auth/login`, credentials, {
+            axiosInstance.post(`/api/auth/login`, credentials, {
               withCredentials: true,
             }),
           (response) => {
@@ -110,7 +110,7 @@ const useAuthStore = create(
       register: async (userData) => {
         return get().handleApiCall(
           () =>
-            axiosInstance.post(`/auth/register`, userData, {
+            axiosInstance.post(`/api/auth/register`, userData, {
               withCredentials: true,
             }),
           (response) => {
@@ -141,7 +141,7 @@ const useAuthStore = create(
 
         try {
           await axiosInstance.post(
-            `/auth/logout`,
+            `/api/auth/logout`,
             {},
             { withCredentials: true }
           );

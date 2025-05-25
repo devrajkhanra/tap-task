@@ -7,20 +7,24 @@ import axiosInstance from "../config/axiosConfig";
  * Centralised data‑access layer for todos
  */
 const fetchTodos = async (userId) => {
-  const { data } = await axiosInstance.get(`/todos/user/${userId}`, {
+  const { data } = await axiosInstance.get(`/api/todos/user/${userId}`, {
     withCredentials: true,
   });
   return data;
 };
 const createTodo = async ({ userId, payload }) => {
-  const { data } = await axiosInstance.post(`/todos/user/${userId}`, payload, {
-    withCredentials: true,
-  });
+  const { data } = await axiosInstance.post(
+    `/api/todos/user/${userId}`,
+    payload,
+    {
+      withCredentials: true,
+    }
+  );
   return data;
 };
 const updateTodo = async ({ id, userId, payload }) => {
   const { data } = await axiosInstance.put(
-    `${API}/user/${userId}/${id}`,
+    `/api/todos/user/${userId}/${id}`,
     payload,
     {
       withCredentials: true,
@@ -29,7 +33,7 @@ const updateTodo = async ({ id, userId, payload }) => {
   return data;
 };
 const deleteTodo = async ({ id, userId }) => {
-  await axiosInstance.delete(`/todos/user/${userId}/${id}`, {
+  await axiosInstance.delete(`/api/todos/user/${userId}/${id}`, {
     withCredentials: true,
   });
   return id;
