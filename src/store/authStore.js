@@ -6,11 +6,7 @@ import axiosInstance from "../config/axiosConfig";
 // Example: const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || "http://localhost:3000/api";
 // For this example, we'll keep them as constants but acknowledge this best practice.
 
-const API_BASE_URL =
-  `${process.env.REACT_APP_API_BASE_URL}/auth` ||
-  "http://localhost:3000/api/auth";
-
-console.log(API_BASE_URL);
+// const API_BASE_URL = "http://localhost:3000/api/auth";
 
 const useAuthStore = create(
   persist(
@@ -67,7 +63,7 @@ const useAuthStore = create(
 
         await get().handleApiCall(
           () =>
-            axiosInstance.get(`${API_BASE_URL}/profile`, {
+            axiosInstance.get(`/auth/profile`, {
               withCredentials: true,
             }),
           (response) => {
@@ -95,7 +91,7 @@ const useAuthStore = create(
       login: async (credentials) => {
         return get().handleApiCall(
           () =>
-            axiosInstance.post(`${API_BASE_URL}/login`, credentials, {
+            axiosInstance.post(`/auth/login`, credentials, {
               withCredentials: true,
             }),
           (response) => {
@@ -114,7 +110,7 @@ const useAuthStore = create(
       register: async (userData) => {
         return get().handleApiCall(
           () =>
-            axiosInstance.post(`${API_BASE_URL}/register`, userData, {
+            axiosInstance.post(`/auth/register`, userData, {
               withCredentials: true,
             }),
           (response) => {
@@ -145,7 +141,7 @@ const useAuthStore = create(
 
         try {
           await axiosInstance.post(
-            `${API_BASE_URL}/logout`,
+            `/auth/logout`,
             {},
             { withCredentials: true }
           );

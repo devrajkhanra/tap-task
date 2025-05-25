@@ -2,7 +2,7 @@ import axios from "axios";
 // Base configuration for axios
 const axiosInstance = axios.create({
   baseURL:
-    `${process.env.REACT_APP_API_BASE_URL}/api` || "http://localhost:5173/api",
+    `${process.env.VITE_API_BASE_URL}/api` || "http://localhost:5173/api",
   withCredentials: true, // Important for cookie authentication
   headers: {
     "Content-Type": "application/json",
