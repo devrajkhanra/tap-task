@@ -1,33 +1,39 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import axios from "axios";
+import axiosInstance from "../config/axiosConfig";
 
 const API =
-  `${process.env.REACT_APP_API_BASE_URL}/api/todos` ||
+  `${process.env.REACT_APP_API_BASE_URL}/todos` ||
   "http://localhost:3000/api/todos";
 
 /**
  * Centralised data‑access layer for todos
  */
 const fetchTodos = async (userId) => {
-  const { data } = await axios.get(`${API}/user/${userId}`, {
+  const { data } = await axiosInstance.get(`${API}/user/${userId}`, {
     withCredentials: true,
   });
   return data;
 };
 const createTodo = async ({ userId, payload }) => {
-  const { data } = await axios.post(`${API}/user/${userId}`, payload, {
+  const { data } = await axiosInstance.post(`${API}/user/${userId}`, payload, {
     withCredentials: true,
   });
   return data;
 };
 const updateTodo = async ({ id, userId, payload }) => {
-  const { data } = await axios.put(`${API}/user/${userId}/${id}`, payload, {
-    withCredentials: true,
-  });
+  const { data } = await axiosInstance.put(
+    `${API}/user/${userId}/${id}`,
+    payload,
+    {
+      withCredentials: true,
+    }
+  );
   return data;
 };
 const deleteTodo = async ({ id, userId }) => {
-  await axios.delete(`${API}/user/${userId}/${id}`, { withCredentials: true });
+  await axiosInstance.delete(`${API}/user/${userId}/${id}`, {
+    withCredentials: true,
+  });
   return id;
 };
 

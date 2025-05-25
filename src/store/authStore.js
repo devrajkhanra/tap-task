@@ -1,13 +1,13 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import axios from "axios";
+import axiosInstance from "../config/axiosConfig";
 
 // In a production environment, API URLs should ideally be configured through environment variables.
 // Example: const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || "http://localhost:3000/api";
 // For this example, we'll keep them as constants but acknowledge this best practice.
 
 const API_BASE_URL =
-  `${process.env.REACT_APP_API_BASE_URL}/api/auth` ||
+  `${process.env.REACT_APP_API_BASE_URL}/auth` ||
   "http://localhost:3000/api/auth";
 
 console.log(API_BASE_URL);
@@ -66,7 +66,10 @@ const useAuthStore = create(
         }
 
         await get().handleApiCall(
-          () => axios.get(`${API_BASE_URL}/profile`, { withCredentials: true }),
+          () =>
+            axiosInstance.get(`${API_BASE_URL}/profile`, {
+              withCredentials: true,
+            }),
           (response) => {
             set({
               user: response.data,
@@ -92,7 +95,7 @@ const useAuthStore = create(
       login: async (credentials) => {
         return get().handleApiCall(
           () =>
-            axios.post(`${API_BASE_URL}/login`, credentials, {
+            axiosInstance.post(`${API_BASE_URL}/login`, credentials, {
               withCredentials: true,
             }),
           (response) => {
@@ -111,7 +114,7 @@ const useAuthStore = create(
       register: async (userData) => {
         return get().handleApiCall(
           () =>
-            axios.post(`${API_BASE_URL}/register`, userData, {
+            axiosInstance.post(`${API_BASE_URL}/register`, userData, {
               withCredentials: true,
             }),
           (response) => {
@@ -141,7 +144,7 @@ const useAuthStore = create(
         });
 
         try {
-          await axios.post(
+          await axiosInstance.post(
             `${API_BASE_URL}/logout`,
             {},
             { withCredentials: true }

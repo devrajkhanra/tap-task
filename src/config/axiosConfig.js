@@ -1,8 +1,7 @@
 import axios from "axios";
-import { history } from "react-router-dom";
 // Base configuration for axios
 const axiosInstance = axios.create({
-  baseURL: process.env.REACT_APP_API_URL || "/api",
+  baseURL: process.env.REACT_APP_API_BASE_URL || "http://localhost:5173/api",
   withCredentials: true, // Important for cookie authentication
   headers: {
     "Content-Type": "application/json",
@@ -13,6 +12,7 @@ const axiosInstance = axios.create({
 axiosInstance.interceptors.request.use(
   (config) => {
     // You can add any global request handling here
+    console.log("Request Sent To:", config.url);
     return config;
   },
   (error) => {
@@ -23,10 +23,12 @@ axiosInstance.interceptors.request.use(
 // Response interceptor
 axiosInstance.interceptors.response.use(
   (response) => {
+    console.log("Response Received From:", response.config.url);
     return response;
   },
   (error) => {
     // Handle authentication errors
+    console.error("Error Occurred at URL:", error.config?.url);
     if (error.response) {
       const { status } = error.response;
 
@@ -34,7 +36,6 @@ axiosInstance.interceptors.response.use(
         // Unauthorized - redirect to login
         console.error("Authentication error: Please login again");
         // If you're using React Router, you could use a history object here to redirect
-        history.push("/login");
       } else if (status === 403) {
         // Forbidden - user doesn't have necessary permissions
         console.error(
