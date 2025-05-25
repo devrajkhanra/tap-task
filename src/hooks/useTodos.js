@@ -1,7 +1,9 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 
-const API = "http://localhost:3000/api/todos";
+const API =
+  "http://localhost:3000/api/todos" ||
+  "https://tap-task-backend.onrender.com/api/todos";
 
 /**
  * Centralised data‑access layer for todos
