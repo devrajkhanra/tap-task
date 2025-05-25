@@ -2,7 +2,8 @@ import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 
 const API =
-  "http://localhost:3000/api/todos" || `${REACT_APP_API_BASE_URL}/api/todos`;
+  `${process.env.REACT_APP_API_BASE_URL}/api/todos` ||
+  "http://localhost:3000/api/todos";
 
 /**
  * Centralised data‑access layer for todos

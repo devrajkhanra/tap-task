@@ -1,116 +1,3 @@
-// import { create } from "zustand";
-// import { persist } from "zustand/middleware";
-// import axios from "axios";
-
-// const useAuthStore = create(
-//   persist(
-//     (set) => ({
-//       user: null,
-//       loading: false,
-//       error: null,
-//       isAuthenticated: false,
-
-//       checkAuth: async () => {
-//         set({ loading: true });
-//         try {
-//           const response = await axios.get(
-//             "http://localhost:3000/api/auth/profile",
-//             {
-//               withCredentials: true,
-//             }
-//           );
-//           set({
-//             user: response.data,
-//             isAuthenticated: true,
-//             loading: false,
-//             error: null,
-//           });
-//         } catch (error) {
-//           set({
-//             user: null,
-//             isAuthenticated: false,
-//             loading: false,
-//             error: error.message,
-//           });
-//           throw new Error(error.message);
-//         }
-//       },
-
-//       login: async (credentials) => {
-//         set({ loading: true });
-//         try {
-//           const response = await axios.post(
-//             "http://localhost:3000/api/auth/login",
-//             credentials,
-//             {
-//               withCredentials: true,
-//             }
-//           );
-//           set({
-//             user: response.data,
-//             isAuthenticated: true,
-//             loading: false,
-//             error: null,
-//           });
-//         } catch (error) {
-//           set({ error: error.message, loading: false });
-//           throw new Error(error.message);
-//         }
-//       },
-
-//       register: async (userData) => {
-//         set({ loading: true });
-//         try {
-//           const response = await axios.post(
-//             "http://localhost:3000/api/auth/register",
-//             userData,
-//             {
-//               withCredentials: true,
-//             }
-//           );
-//           set({
-//             user: response.data,
-//             isAuthenticated: true,
-//             loading: false,
-//             error: null,
-//           });
-//         } catch (error) {
-//           set({ error: error.message, loading: false });
-//           throw new Error(error.message);
-//         }
-//       },
-
-//       logout: async () => {
-//         set({ loading: true });
-//         try {
-//           await axios.post(
-//             "http://localhost:3000/api/auth/logout",
-//             {},
-//             {
-//               withCredentials: true,
-//             }
-//           );
-//           set({
-//             user: null,
-//             isAuthenticated: false,
-//             loading: false,
-//             error: null,
-//           });
-//         } catch (error) {
-//           set({ error: error.message, loading: false });
-//           throw new Error(error.message);
-//         }
-//       },
-//     }),
-//     {
-//       name: "auth-storage", // Persist state in localStorage
-//       getStorage: () => localStorage,
-//     }
-//   )
-// );
-
-// export default useAuthStore;
-
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import axios from "axios";
@@ -118,8 +5,10 @@ import axios from "axios";
 // In a production environment, API URLs should ideally be configured through environment variables.
 // Example: const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || "http://localhost:3000/api";
 // For this example, we'll keep them as constants but acknowledge this best practice.
+
 const API_BASE_URL =
-  "http://localhost:3000/api/auth" || `${REACT_APP_API_BASE_URL}/api/auth`; // Define a base URL for auth endpoints
+  `${process.env.REACT_APP_API_BASE_URL}/api/auth` ||
+  "http://localhost:3000/api/auth";
 
 const useAuthStore = create(
   persist(
