@@ -1,5 +1,5 @@
 import axios from "axios";
-
+import { history } from "react-router-dom";
 // Base configuration for axios
 const axiosInstance = axios.create({
   baseURL: process.env.REACT_APP_API_URL || "/api",
@@ -34,7 +34,7 @@ axiosInstance.interceptors.response.use(
         // Unauthorized - redirect to login
         console.error("Authentication error: Please login again");
         // If you're using React Router, you could use a history object here to redirect
-        // history.push('/login');
+        history.push("/login");
       } else if (status === 403) {
         // Forbidden - user doesn't have necessary permissions
         console.error(

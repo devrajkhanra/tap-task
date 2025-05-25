@@ -21,7 +21,7 @@ const Header = ({ onToggleSidebar }) => {
     <header className="header">
       <div className="header-left">
         <button className="toggle-sidebar" onClick={onToggleSidebar}>
-          <FontAwesomeIcon icon={faHamburger} />
+          <FontAwesomeIcon icon={faHamburger} size="2xl" color="#3498db" />
         </button>
         <h1 className="header-logo">TapTask</h1>
       </div>
