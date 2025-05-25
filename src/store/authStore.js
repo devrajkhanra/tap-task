@@ -119,8 +119,7 @@ import axios from "axios";
 // Example: const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || "http://localhost:3000/api";
 // For this example, we'll keep them as constants but acknowledge this best practice.
 const API_BASE_URL =
-  "http://localhost:3000/api/auth" ||
-  "https://tap-task-backend.onrender.com/api/auth"; // Define a base URL for auth endpoints
+  "http://localhost:3000/api/auth" || `${REACT_APP_API_BASE_URL}/api/auth`; // Define a base URL for auth endpoints
 
 const useAuthStore = create(
   persist(
