@@ -2,21 +2,26 @@ import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import "./TodoForm.css";
+
 const validationSchema = Yup.object({
   title: Yup.string().required("Title is required"),
   description: Yup.string(),
   priority: Yup.string().required(),
-  estimatedTimeMinutes: Yup.number()
-    .min(1, "Must be at least 1 minute")
-    .max(10080, "Max 1 week")
-    .nullable(),
+  dueDate: Yup.date().required("Due date is required"),
 });
 
 const TodoForm = ({ initialValues, onSubmit, mode }) => {
   return (
     <div>
       <Formik
-        initialValues={initialValues}
+        initialValues={{
+          title: initialValues.title || "",
+          description: initialValues.description || "",
+          priority: initialValues.priority || "medium",
+          dueDate: initialValues.dueDate
+            ? new Date(initialValues.dueDate).toISOString().slice(0, 16)
+            : "",
+        }}
         validationSchema={validationSchema}
         onSubmit={onSubmit}
         enableReinitialize
@@ -45,13 +50,9 @@ const TodoForm = ({ initialValues, onSubmit, mode }) => {
             </div>
 
             <div>
-              <label>Estimated Time (minutes)</label>
-              <Field
-                name="estimatedTimeMinutes"
-                type="number"
-                className="todo-input"
-              />
-              <ErrorMessage name="estimatedTimeMinutes" component="div" />
+              <label>Due Date</label>
+              <Field name="dueDate" type="datetime-local" />
+              <ErrorMessage name="dueDate" component="div" />
             </div>
 
             <button type="submit" disabled={isSubmitting}>

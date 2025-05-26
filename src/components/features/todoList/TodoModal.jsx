@@ -1,4 +1,4 @@
-import TodoForm from "./TodoForm";
+import TodoForm from "./Form/TodoForm";
 import "./TodoModal.css";
 const TodoModal = ({
   isOpen,

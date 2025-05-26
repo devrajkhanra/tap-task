@@ -1,3 +1,27 @@
 body {
   margin: 0;
 }
+
+/* Error Notification */
+.notification.error {
+  background-color: #ff4d4d; /* Red */
+  color: white;
+}
+
+/* Warning Notification */
+.notification.warning {
+  background-color: #ffc107; /* Yellow */
+  color: black;
+}
+
+/* Success Notification */
+.notification.success {
+  background-color: #4caf50; /* Green */
+  color: white;
+}
+
+/* Info Notification */
+.notification.info {
+  background-color: #2196f3; /* Blue */
+  color: white;
+}

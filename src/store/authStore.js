@@ -2,12 +2,6 @@ import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import axiosInstance from "../config/axiosConfig";
 
-// In a production environment, API URLs should ideally be configured through environment variables.
-// Example: const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || "http://localhost:3000/api";
-// For this example, we'll keep them as constants but acknowledge this best practice.
-
-// const API_BASE_URL = "http://localhost:3000/api/auth";
-
 const useAuthStore = create(
   persist(
     (set, get) => ({

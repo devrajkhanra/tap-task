@@ -52,6 +52,13 @@ function AppRoutes() {
 }
 
 function App() {
+  // useEffect(() => {
+  //   if (!document.cookie) {
+  //     alert(
+  //       "Cookies are blocked in your browser settings. Enable third-party cookies to log in."
+  //     );
+  //   }
+  // }, []);
   return (
     <QueryClientProvider client={queryClient}>
       <Router>

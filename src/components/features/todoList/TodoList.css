@@ -106,9 +106,15 @@ button {
   text-overflow: ellipsis;
 }
 
+.due-date-cell {
+  color: var(--text-light);
+  font-size: 0.875rem;
+  text-overflow: ellipsis;
+}
+
 .time-cell {
   text-align: center;
-  color: #555;
+  color: var(--text-light);
   font-size: 0.85rem;
   white-space: nowrap;
 }
@@ -116,10 +122,11 @@ button {
 .action-cell {
   display: flex;
   gap: 0.5rem;
-  justify-content: center;
+  align-content: center;
 }
 
 /* Buttons in table */
+.notification-btn,
 .edit-btn,
 .delete-btn {
   padding: 0.35rem 0.6rem;
@@ -127,12 +134,14 @@ button {
   border-radius: 6px;
 }
 
-.edit-btn {
-  background-color: rgba(59, 130, 246, 0.1);
-  color: var(--primary-color);
+.edit-btn,
+.notification-btn {
+  background-color: rgba(108, 117, 125, 0.1);
+  color: #6c757d;
 }
-.edit-btn:hover {
-  background-color: var(--primary-hover);
+.edit-btn:hover,
+.notification-btn:hover {
+  background-color: #555c62;
   color: white;
 }
 
